@@ -70,45 +70,47 @@
 }
 
 
-interface User {
-    name: string;
-    age: number;
-}
+    interface User {
+        name: string;
+        age: number;
+    }
 
-interface Car {
-    name: string;
-    color: string;
-}
+    interface Car {
+        name: string;
+        color: string;
+    }
 
-interface Book {
-    price: number;
-}
+    interface Book {
+        price: number;
+    }
 
-const user: User = {name: 'kk', age: 20};
-const car: Car = {name: 'bmw', color: 'gray'};
-const book: Book = {price: 3000};
+    const user: User = {name: 'kk', age: 20};
+    const car: Car = {name: 'bmw', color: 'gray'};
+    const book: Book = {price: 3000};
 
     // 현재 data는 any 타입이다.
-/*
-    function showName(data): string {
-        return data.name;
-    }
-  */
+    /*
+        function showName(data): string {
+            return data.name;
+        }
+      */
 
     // 타입 지정
     // 오류 발생 T에는 name이 없다
     // book은 name이 없으므로... 하지만 showName 함수에서 오류가 난다
-/*
-    function showName<T>(data: T): string {
-        return data.name;
-    }
-*/
+    /*
+        function showName<T>(data: T): string {
+            return data.name;
+        }
+    */
     // T 타입을 받을때 그 타입은 {name: string} 타입을 확장해서 가지고 있어야 한다.
     // 이러면 호출 하는 쪽에서 error로 바뀌게 됨
-    function showName<T extends {name: string}>(data: T): string {
+    function showName<T extends { name: string }>(data: T): string {
         return data.name;
     }
 
     showName(user);
     showName(car);
-    showName(book);
+
+    // {name: string } 이 없으니 오류 발생
+    // showName(book);
