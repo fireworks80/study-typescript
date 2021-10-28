@@ -211,9 +211,7 @@ interface Car {
         start() {
             console.log('go');
         },
-        stop() {
-            console.log('stop');
-        }
+       럴
     };
 }
 
